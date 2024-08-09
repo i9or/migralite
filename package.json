@@ -1,0 +1,24 @@
+{
+  "name": "migralite",
+  "version": "0.0.1",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "1.1.6"
+  },
+  "peerDependencies": {
+    "typescript": "5.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/i9or/migralite.git"
+  },
+  "description": "Simple forward-only SQLite migration tool for Bun",
+  "keywords": [
+    "SQLite",
+    "migrations",
+    "bun"
+  ],
+  "author": "Igor <dont@bzzr.me> (https://ignorethis.page/)",
+  "license": "AGPL-3.0-only"
+}
