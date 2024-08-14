@@ -1,10 +1,11 @@
 {
   "name": "migralite",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "1.1.6"
+    "@types/bun": "1.1.6",
+    "prettier": "3.3.3"
   },
   "peerDependencies": {
     "typescript": "5.5.4"
@@ -21,5 +22,13 @@
   ],
   "author": "Igor <dont@bzzr.me> (https://ignorethis.page/)",
   "license": "AGPL-3.0-only",
-  "homepage": "https://github.com/i9or/migralite#readme"
+  "homepage": "https://github.com/i9or/migralite#readme",
+  "files": [
+    "index.ts",
+    "package.json",
+    "LICENSE",
+    "README.md",
+    "AGLPLv3_Logo.svg",
+    "tsconfig.json"
+  ]
 }

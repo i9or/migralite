@@ -4,10 +4,10 @@ Migralite is lightweight forward-only SQLite migration tool for Bun.
 
 Key features:
 
-* Simple *.sql files
-* Forward-only migrations [^1]
+* Simple *.sql files as migration scripts
+* Forward-only [^1]
 * Runs on Bun
-* Sensible defaults, so there's no need to implement migration script (but you can if you want)
+* CLI with sensible defaults, so there's no need to implement migration script
 * Migration generator
 * Version tracking — keeps track of applied migrations to prevent duplicate runs
 * Migrations are wrapped in transactions by default
