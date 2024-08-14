@@ -32,6 +32,10 @@ To run:
 bun run index.ts
 ```
 
+## Contributions
+
+Please don't.
+
 ## License
 
 Code is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3 only.
