@@ -30,5 +30,6 @@
     "README.md",
     "AGLPLv3_Logo.svg",
     "tsconfig.json"
-  ]
+  ],
+  "bin": "./index.ts"
 }

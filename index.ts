@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 /* eslint-disable no-console */
 import { resolve } from "node:path";
 
