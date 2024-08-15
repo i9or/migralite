@@ -2,10 +2,11 @@
 
 /* eslint-disable no-console */
 import { resolve } from "node:path";
-
 import { Glob } from "bun";
 import { Database } from "bun:sqlite";
 import { parseArgs } from "util";
+
+import { version as packageVersion } from "./package.json";
 
 type NoParams = never[];
 type NoReturn = never;
@@ -89,6 +90,14 @@ const parseCliArguments = () => {
       generate: {
         type: "string",
         short: "g",
+      },
+      help: {
+        type: "boolean",
+        short: "h",
+      },
+      version: {
+        type: "boolean",
+        short: "v",
       },
     },
     strict: true,
@@ -193,8 +202,33 @@ const applyMigrations = async (database: string, migrations: string) => {
   }
 };
 
+const printHelpMessage = () => {
+  console.info("Usage:");
+  console.info("  --help, -h\t\tPrint this help message");
+  console.info("  --version, -v\t\tPrint version");
+  console.info("  --database, -d\tPath to the database, required");
+  console.info("  --migrations, -m\tPath to migrations folder, './migrations' by default");
+  console.info("  --generate, -g\tGenerate a migration file");
+};
+
+const printVersion = () => {
+  console.info(packageVersion);
+};
+
 const migrate = async () => {
-  const { generate, migrations, database } = parseCliArguments();
+  const { generate, migrations, database, help, version } = parseCliArguments();
+
+  if (version) {
+    printVersion();
+
+    return;
+  }
+
+  if (help) {
+    printHelpMessage();
+
+    return;
+  }
 
   if (!migrations) {
     throw new Error("Migrations path is not specified");
