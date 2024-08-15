@@ -2,15 +2,17 @@
 
 Migralite is lightweight forward-only SQLite migration tool for Bun.
 
+<img src="./migralite-logo.png" width="200" alt="Migralite Logo"/>
+
 Key features:
 
-* Simple *.sql files as migration scripts
-* Forward-only [^1]
-* Runs on Bun
-* CLI with sensible defaults, so there's no need to implement migration script
-* Migration generator
-* Version tracking — keeps track of applied migrations to prevent duplicate runs
-* Migrations are wrapped in transactions by default
+- Simple \*.sql files as migration scripts
+- Forward-only [^1]
+- Runs on Bun
+- CLI with sensible defaults, so there's no need to implement migration script
+- Migration generator
+- Version tracking — keeps track of applied migrations to prevent duplicate runs
+- Migrations are wrapped in transactions by default
 
 [^1]: https://nickcraver.com/blog/2016/05/03/stack-overflow-how-we-do-deployment-2016-edition/#database-migrations
 
@@ -70,11 +72,12 @@ Example:
 
 ```bash
 bunx migralite -d ./db/main.sqlite
-````
+```
 
 ### Migrations path
 
-`--migrations` or `-m` — path to the folder with SQL migration scripts, by default it's `./migrations` folder in the root of the project.
+`--migrations` or `-m` — path to the folder with SQL migration scripts, by default it's `./migrations` folder in the
+root of the project.
 
 Example:
 
@@ -84,7 +87,8 @@ bunx migralite -d ./db/main.sqlite -m ./db/migrations
 
 ### Migration file generation
 
-`--generate` or `-g` — migration file generation mode. It accepts short summary of what migration script is doing to generate migration name. The summary is added as a comment to the migration script.
+`--generate` or `-g` — migration file generation mode. It accepts short summary of what migration script is doing to
+generate migration name. The summary is added as a comment to the migration script.
 
 Example:
 
@@ -94,7 +98,8 @@ bunx migralite -g "Create users table"
 
 This will create a migration file in `./migrations` folder called `./migrations/20240815123456__create-users-table.sql`.
 
-Only this filename format is accepted by the migration tool. Anything else will result in error and migrations won't run.
+Only this filename format is accepted by the migration tool. Anything else will result in error and migrations won't
+run.
 
 ## Development
 
@@ -113,6 +118,10 @@ bun run index.ts
 ## Contributions
 
 Please don't.
+
+## Attributions
+
+Logo by https://www.behance.net/garnenka
 
 ## License
 

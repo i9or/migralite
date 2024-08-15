@@ -7,3 +7,4 @@
 - [x] Add CLI help
 - [ ] Add single file executable compilation
 - [ ] Add GitHub actions for build/publish
+- [x] Add logo
