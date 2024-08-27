@@ -117,7 +117,8 @@ bun run index.ts
 
 ## Contributions
 
-Please don't.
+Please raise an issue first and let's discuss. 
+This project is pretty much done, but I am still open for some sensible contributions.
 
 ## Attributions
 
