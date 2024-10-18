@@ -1,6 +1,6 @@
 {
   "name": "migralite",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
@@ -21,7 +21,7 @@
     "bun"
   ],
   "author": "Igor <dont@bzzr.me> (https://ignorethis.page/)",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "homepage": "https://github.com/i9or/migralite#readme",
   "files": [
     "index.ts",
