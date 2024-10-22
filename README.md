@@ -101,6 +101,37 @@ This will create a migration file in `./migrations` folder called `./migrations/
 Only this filename format is accepted by the migration tool. Anything else will result in error and migrations won't
 run.
 
+## Use as a library
+
+It's possible to use Migralite as a library:
+
+```ts
+import { Database } from "bun:sqlite";
+import { applyMigrations } from "migralite";
+
+const db = new Database(":memory:");
+
+try {
+    await applyMigrations(db, "./migrations");
+} catch (err) {
+    console.error(err);
+}
+```
+
+Or connect to an existing DB file:
+
+```ts
+import { applyMigrations, connectToDatabase } from "migralite";
+
+const db = connectToDatabase("./path/to/db");
+
+try {
+    await applyMigrations(db, "./migrations");
+} catch (err) {
+    console.error(err);
+}
+```
+
 ## Development
 
 To install dependencies:
