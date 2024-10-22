@@ -2,7 +2,6 @@ import {
   describe,
   expect,
   it,
-  spyOn,
   beforeAll,
   afterAll,
   mock,
@@ -14,7 +13,7 @@ import {
   printHelpMessage,
   printVersion,
   reportResult,
-} from "../cli.ts";
+} from "../cli-helpers.ts";
 
 describe("utils", () => {
   const consoleInfo = mock();
@@ -53,7 +52,7 @@ describe("utils", () => {
     it("should parse arguments", () => {
       const result = parseCliArguments([
         "path/to/bun",
-        "index.ts",
+        "cli.ts",
         "-d",
         "./db/main.sqlite",
         "-h",
@@ -101,7 +100,11 @@ describe("utils", () => {
     it("should print current version", () => {
       printVersion();
 
-      expect(consoleInfo).toBeCalledWith("1.0.1");
+      expect(consoleInfo).toBeCalledWith(
+        expect.stringMatching(
+          /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/,
+        ),
+      );
     });
   });
 });

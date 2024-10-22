@@ -6,7 +6,7 @@ import {
   type NoParams,
   type NoReturn,
 } from "./utils.ts";
-import { reportResult } from "./cli.ts";
+import { reportResult } from "./cli-helpers.ts";
 
 const createMigrationsTable = (db: Database) => {
   db.run(
@@ -20,7 +20,7 @@ const createMigrationsTable = (db: Database) => {
   );
 };
 
-const connectToDatabase = (databasePath: string) => {
+export const connectToDatabase = (databasePath: string) => {
   const dbPath = resolve(process.cwd(), databasePath);
 
   return new Database(dbPath, { strict: true, create: true });
@@ -42,9 +42,28 @@ const resolveAppliedMigrations = (db: Database) => {
   return fileNameToHash;
 };
 
-export const applyMigrations = async (database: string, migrations: string) => {
-  const db = connectToDatabase(database);
-
+/**
+ * Applies database migrations from specified files while ensuring idempotency and integrity.
+ *
+ * @param {Database} db - The Bun database instance to apply migrations to
+ * @param {string} migrations - Path to the directory containing migration files
+ *
+ * @throws {Error} Throws an error if:
+ * - Migration filenames are invalid
+ * - A migration file's hash doesn't match its previously applied version
+ *
+ * @example
+ * ```ts
+ * const db = new Database("./my_db.sqlite");
+ * await applyMigrations(db, "./migrations");
+ * ```
+ *
+ * @returns {Promise<void>} Resolves when all migrations have been applied or verified
+ */
+export const applyMigrations = async (
+  db: Database,
+  migrations: string,
+): Promise<void> => {
   createMigrationsTable(db);
 
   // Query __migrations__ table to find out which migrations were already applied

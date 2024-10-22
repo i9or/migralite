@@ -25,13 +25,16 @@
   "homepage": "https://github.com/i9or/migralite#readme",
   "files": [
     "index.ts",
+    "cli.ts",
     "package.json",
     "LICENSE",
     "README.md",
     "AGLPLv3_Logo.svg",
-    "tsconfig.json"
+    "tsconfig.json",
+    "lib/**",
+    "!/**/__tests__"
   ],
   "bin": {
-    "migralite": "index.ts"
+    "migralite": "cli.ts"
   }
 }
