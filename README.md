@@ -112,9 +112,9 @@ import { applyMigrations } from "migralite";
 const db = new Database(":memory:");
 
 try {
-    await applyMigrations(db, "./migrations");
+  await applyMigrations(db, "./migrations");
 } catch (err) {
-    console.error(err);
+  console.error(err);
 }
 ```
 
@@ -126,9 +126,9 @@ import { applyMigrations, connectToDatabase } from "migralite";
 const db = connectToDatabase("./path/to/db");
 
 try {
-    await applyMigrations(db, "./migrations");
+  await applyMigrations(db, "./migrations");
 } catch (err) {
-    console.error(err);
+  console.error(err);
 }
 ```
 
@@ -148,7 +148,7 @@ bun run cli.ts
 
 ## Contributions
 
-Please raise an issue first and let's discuss. 
+Please raise an issue first and let's discuss.
 This project is pretty much done, but I am still open for some sensible contributions.
 
 ## Attributions
