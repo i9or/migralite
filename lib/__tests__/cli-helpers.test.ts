@@ -4,7 +4,7 @@ import {
   it,
   beforeAll,
   afterAll,
-  mock,
+  spyOn,
   beforeEach,
 } from "bun:test";
 
@@ -16,27 +16,17 @@ import {
 } from "../cli-helpers.ts";
 
 describe("utils", () => {
-  const consoleInfo = mock();
-  let originalConsole: typeof console;
-
-  beforeAll(() => {
-    originalConsole = console;
-    console.info = consoleInfo;
-  });
-
-  afterAll(() => {
-    console.info = originalConsole.info;
-  });
+  const consoleInfoSpy = spyOn(console, "info");
 
   beforeEach(() => {
-    consoleInfo.mockReset();
+    consoleInfoSpy.mockClear();
   });
 
   describe("reportResult", () => {
     it("should report how many migrations were applied", () => {
       reportResult(123);
 
-      expect(consoleInfo).toBeCalledWith(
+      expect(consoleInfoSpy).toBeCalledWith(
         "Successfully applied 123 migration(s)!",
       );
     });
@@ -44,7 +34,7 @@ describe("utils", () => {
     it("should report no migrations were applied", () => {
       reportResult(0);
 
-      expect(consoleInfo).toBeCalledWith("No migrations were applied");
+      expect(consoleInfoSpy).toBeCalledWith("No migrations were applied");
     });
   });
 
@@ -73,24 +63,24 @@ describe("utils", () => {
   describe("printHelpMessage", () => {
     printHelpMessage();
 
-    expect(consoleInfo).toHaveBeenNthCalledWith(1, "Usage:");
-    expect(consoleInfo).toHaveBeenNthCalledWith(
+    expect(consoleInfoSpy).toHaveBeenNthCalledWith(1, "Usage:");
+    expect(consoleInfoSpy).toHaveBeenNthCalledWith(
       2,
       "  --help, -h\t\tPrint this help message",
     );
-    expect(consoleInfo).toHaveBeenNthCalledWith(
+    expect(consoleInfoSpy).toHaveBeenNthCalledWith(
       3,
       "  --version, -v\t\tPrint version",
     );
-    expect(consoleInfo).toHaveBeenNthCalledWith(
+    expect(consoleInfoSpy).toHaveBeenNthCalledWith(
       4,
       "  --database, -d\tPath to the database, required",
     );
-    expect(consoleInfo).toHaveBeenNthCalledWith(
+    expect(consoleInfoSpy).toHaveBeenNthCalledWith(
       5,
       "  --migrations, -m\tPath to migrations folder, './migrations' by default",
     );
-    expect(consoleInfo).toHaveBeenNthCalledWith(
+    expect(consoleInfoSpy).toHaveBeenNthCalledWith(
       6,
       "  --generate, -g\tGenerate a migration file",
     );
@@ -100,7 +90,7 @@ describe("utils", () => {
     it("should print current version", () => {
       printVersion();
 
-      expect(consoleInfo).toBeCalledWith(
+      expect(consoleInfoSpy).toBeCalledWith(
         expect.stringMatching(
           /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/,
         ),
